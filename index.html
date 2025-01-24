@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello Kitty Gallery</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', sans-serif;
+      background-color: #ffe6f2;
+      color: #ff66a3;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    header {
+      background-color: #ffccf2;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    header img {
+      width: 80px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    header img:hover {
+      transform: scale(1.1);
+    }
+    h1 {
+      margin: 10px 0;
+      font-size: 36px;
+      font-weight: bold;
+      color: #ff3399;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    .button-container {
+      margin-top: 20px;
+    }
+    .button-container img {
+      width: 100px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .button-container img:hover {
+      transform: scale(1.1);
+    }
+    footer {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #ffccf2;
+      box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    }
+    footer p {
+      font-size: 18px;
+      margin: 0;
+      color: #ff3399;
+    }
+    .months-together {
+      font-size: 24px;
+      color: #ff3399;
+      margin: 10px 0;
+    }
+
+    /* Animations */
+    .sparkle {
+      position: absolute;
+      background-color: #ff66a3;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      animation: sparkleAnimation 1s infinite;
+    }
+
+    @keyframes sparkleAnimation {
+      0% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.5); opacity: 0.3; }
+      100% { transform: scale(1); opacity: 0.7; }
+    }
+
+    .falling-blossom {
+      position: absolute;
+      font-size: 25px;
+      animation: fallingBlossomAnimation 5s infinite;
+    }
+
+    @keyframes fallingBlossomAnimation {
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(180deg); opacity: 0; }
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://i.imgur.com/1pWcifD.png" alt="For Mommy :3" id="play-button">
+    <h1>𝓡𝓐𝓕 𝓧 𝓘𝓢𝓐 <3</h1>
+  </header>
+  <main>
+    <div class="gallery">
+      <img src="rafxisa.PNG" alt="Screenshot 1">
+      <img src="RobloxScreenShot20241013_235102369.png" alt="Screenshot 2">
+      <img src="RobloxScreenShot20241218_122047018.png" alt="Screenshot 3">
+      <img src="RobloxScreenShot20250114_131758057 - Copy.png" alt="Screenshot 4">
+      <img src="image5.png" alt="Screenshot 5">
+      <img src="image6.png" alt="Screenshot 6">
+      <img src="image7.png" alt="Screenshot 7">
+    </div>
+    <div class="button-container">
+      <img src="https://i.imgur.com/1pWcifD.png" alt="Play Audio" id="kitty-button">
+    </div>
+    <div class="months-together" id="months-together"></div>
+  </main>
+  <footer>
+    <p>💕 𝒇𝒓𝒐𝒎:𝒖𝒓 𝒉𝒖𝒔𝒃𝒂𝒏𝒅 :𝟑 💕</p>
+  </footer>
+
+  <audio id="kitty-audio" src="test.mp3" preload="auto" loop></audio>
+  <script>
+    // Calculate months together
+    const startDate = new Date('2024-08-07'); // Date you got together
+    const today = new Date();
+    const diffTime = today - startDate;
+    const diffMonths = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30)); // Convert to months
+    document.getElementById('months-together').textContent = `Months Together: ${diffMonths} months 💖`;
+
+    // Play audio toggle
+    document.getElementById('kitty-button').addEventListener('click', () => {
+      const audio = document.getElementById('kitty-audio');
+      if (audio.paused) {
+        audio.play()
+          .then(() => {
+            console.log('Audio is playing');
+          })
+          .catch(err => {
+            console.error('Failed to play audio:', err);
+          });
+      } else {
+        audio.pause(); // Optional: Toggles playback
+      }
+    });
+
+    // Sparkles and cherry blossoms animation
+    const createSparkles = () => {
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      sparkle.style.left = `${Math.random() * 100}vw`;
+      sparkle.style.top = `${Math.random() * 100}vh`;
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1000);
+    };
+
+    const createBlossoms = () => {
+      const blossom = document.createElement('div');
+      blossom.classList.add('falling-blossom');
+      blossom.textContent = "🌸"; // Cherry blossom emoji
+      blossom.style.left = `${Math.random() * 100}vw`;
+      document.body.appendChild(blossom);
+      setTimeout(() => blossom.remove(), 5000);
+    };
+
+    setInterval(createSparkles, 300);
+    setInterval(createBlossoms, 2000);
+  </script>
+</body>
+</html>
