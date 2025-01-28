@@ -47,10 +47,20 @@
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
     }
     .gallery img:hover {
       transform: scale(1.05);
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    .gallery img:focus {
+      transform: scale(2);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(2);
+      z-index: 1000;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
     }
     .button-container {
       margin-top: 20px;
@@ -116,16 +126,16 @@
   </header>
   <main>
     <div class="gallery">
-      <img src="rafxisa.PNG" alt="Screenshot 1">
-      <img src="RobloxScreenShot20241013_235102369.png" alt="Screenshot 2">
-      <img src="RobloxScreenShot20241218_122047018.png" alt="Screenshot 3">
-      <img src="RobloxScreenShot20250114_131758057 - Copy.png" alt="Screenshot 4">
-      <img src="image5.png" alt="Screenshot 5">
-      <img src="image6.png" alt="Screenshot 6">
-      <img src="image7.png" alt="Screenshot 7">
-      <img src="image8.png" alt="Screenshot 8">
-      <img src="image9.png" alt="Screenshot 9">
-      <img src="image10.png" alt="Screenshot 10">
+      <img src="rafxisa.PNG" alt="Screenshot 1" tabindex="0">
+      <img src="RobloxScreenShot20241013_235102369.png" alt="Screenshot 2" tabindex="0">
+      <img src="RobloxScreenShot20241218_122047018.png" alt="Screenshot 3" tabindex="0">
+      <img src="RobloxScreenShot20250114_131758057 - Copy.png" alt="Screenshot 4" tabindex="0">
+      <img src="image5.png" alt="Screenshot 5" tabindex="0">
+      <img src="image6.png" alt="Screenshot 6" tabindex="0">
+      <img src="image7.png" alt="Screenshot 7" tabindex="0">
+      <img src="image8.png" alt="Screenshot 8" tabindex="0">
+      <img src="image9.png" alt="Screenshot 9" tabindex="0">
+      <img src="image10.png" alt="Screenshot 10" tabindex="0">
     </div>
     <div class="button-container">
       <img src="https://i.imgur.com/1pWcifD.png" alt="Play Audio" id="kitty-button">
